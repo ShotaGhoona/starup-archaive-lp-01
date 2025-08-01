@@ -1,33 +1,11 @@
 'use client'
 
-import { Canvas } from '@react-three/fiber'
-import { Suspense } from 'react'
 import { motion } from 'framer-motion'
 import { HeroText } from './HeroText'
-import { CentralDataSphere } from './CentralDataSphere'
 
 export function HeroLayout() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-white via-gray-50 to-blue-50">
-      {/* Three.js 背景 */}
-      <div className="absolute inset-0 z-0">
-        <Canvas
-          camera={{ position: [0, 0, 8], fov: 75 }}
-          style={{ background: 'transparent' }}
-        >
-          <Suspense fallback={null}>
-            {/* 中央データスフィア */}
-            <CentralDataSphere />
-            
-            {/* 環境効果 */}
-            <fog attach="fog" args={['#ffffff', 15, 25]} />
-          </Suspense>
-        </Canvas>
-      </div>
-
-      {/* グラデーションオーバーレイ */}
-      <div className="absolute inset-0 z-10 bg-gradient-to-r from-white/80 via-white/40 to-transparent" />
-
       {/* メインコンテンツ */}
       <div className="relative z-20 min-h-screen flex items-center">
         <div className="w-full px-8 lg:px-16 xl:px-24">
@@ -63,7 +41,6 @@ export function HeroLayout() {
           </div>
         </div>
       </div>
-
     </div>
   )
 }
